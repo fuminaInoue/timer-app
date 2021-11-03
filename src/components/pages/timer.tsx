@@ -6,12 +6,12 @@ import { makeStyles } from '@mui/styles'
 import Button from '@mui/material/Button'
 import { useHistory } from 'react-router-dom'
 
-export const Index: React.FC = () => {
+export const Timer: React.FC = () => {
   const classes = UseStyles()
   const history = useHistory()
 
-  const onClickMinutesButton = (minutes: number) => {
-    history.push({ pathname: '/timer', search: `?time=${minutes}` })
+  const onClickReturnButton = () => {
+    history.push({ pathname: '/' })
   }
 
   return (
@@ -19,17 +19,13 @@ export const Index: React.FC = () => {
       <CssBaseline />
       <Container maxWidth="sm">
         <Box sx={{ bgcolor: '#cfe8fc', height: '100vh' }}>
-          <h1 className={classes.titleStyle}>ChinChilla Timer</h1>
+          <h1 className={classes.titleStyle}>Timer</h1>
           <Button
             variant="contained"
-            sx={{
-              margin: '80px auto 0',
-              display: 'block',
-              textTransform: 'none',
-            }}
-            onClick={() => onClickMinutesButton(3)}
+            sx={{ margin: '80px auto 0', display: 'block' }}
+            onClick={() => onClickReturnButton()}
           >
-            3 minutes
+            もどる
           </Button>
         </Box>
       </Container>
