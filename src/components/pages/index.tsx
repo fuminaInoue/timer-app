@@ -1,10 +1,12 @@
 import * as React from 'react'
+import { useHistory } from 'react-router-dom'
+
+// @mui
+import { makeStyles } from '@mui/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
-import { makeStyles } from '@mui/styles'
 import Fab from '@mui/material/Fab'
-import { useHistory } from 'react-router-dom'
 
 export const Index: React.FC = () => {
   const classes = UseStyles()
