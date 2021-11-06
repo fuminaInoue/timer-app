@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
 // @mui
@@ -13,6 +13,46 @@ import Paper from '@mui/material/Paper'
 export const Timer: React.FC = () => {
   const classes = UseStyles()
   const history = useHistory()
+  const { time } = require('query-string').parse(window.location.search)
+  const [minutes, setMinutes] = useState(0)
+  const [seconds, setSeconds] = useState(60)
+
+  useEffect(() => {
+    // queryからtimeを受け取ってセットする
+    setMinutes(Number(time))
+    // 1秒後に1度だけ分を1減らす
+    setTimeout(() => setMinutes(Number(time) - 1), 1000)
+  }, [time])
+
+  useEffect(() => {
+    if (seconds > 0) {
+      // 秒がゼロ以上なら1秒後に1秒減らす
+      setTimeout(() => setSeconds(seconds - 1), 1000)
+    } else if (seconds === 0 && minutes > 0) {
+      // 秒がゼロで分が残っていたら1分減らして
+      setMinutes(minutes - 1)
+      // 秒に60をセットする
+      setSeconds(60)
+    }
+  }, [seconds])
+
+  const firstSeconds = () => {
+    if (seconds === 60) {
+      return '0'
+    } else if (seconds >= 10) {
+      return String(seconds).slice(0, 1)
+    } else {
+      return '0'
+    }
+  }
+
+  const secondSeconds = () => {
+    if (seconds >= 10) {
+      return String(seconds).slice(1)
+    } else {
+      return seconds
+    }
+  }
 
   const onClickReturnButton = () => {
     history.push({ pathname: '/' })
@@ -46,10 +86,10 @@ export const Timer: React.FC = () => {
             }}
           >
             {/**  TODO: font-family */}
-            <Paper elevation={3}>3</Paper>
+            <Paper elevation={3}>{minutes}</Paper>
             <span>:</span>
-            <Paper elevation={3}>0</Paper>
-            <Paper elevation={3}>0</Paper>
+            <Paper elevation={3}>{firstSeconds()}</Paper>
+            <Paper elevation={3}>{secondSeconds()}</Paper>
           </Box>
           <Fab
             color="primary"
