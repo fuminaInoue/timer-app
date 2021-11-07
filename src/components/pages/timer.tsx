@@ -18,23 +18,26 @@ export const Timer: React.FC = () => {
   const [seconds, setSeconds] = useState(60)
 
   useEffect(() => {
-    // queryからtimeを受け取ってセットする
     setMinutes(Number(time))
-    // 1秒後に1度だけ分を1減らす
     setTimeout(() => setMinutes(Number(time) - 1), 1000)
+    setTimeout(() => setSeconds(59), 1000)
   }, [time])
 
   useEffect(() => {
-    if (seconds > 0) {
-      // 秒がゼロ以上なら1秒後に1秒減らす
-      setTimeout(() => setSeconds(seconds - 1), 1000)
-    } else if (seconds === 0 && minutes > 0) {
-      // 秒がゼロで分が残っていたら1分減らして
+    if (seconds === 0 && minutes === 0) return
+
+    const countDown = setInterval(() => setSeconds(seconds - 1), 1000)
+
+    if (seconds === 0 && minutes > 0) {
       setMinutes(minutes - 1)
-      // 秒に60をセットする
       setSeconds(60)
     }
-  }, [seconds])
+
+    // clean up
+    return () => {
+      clearInterval(countDown)
+    }
+  }, [seconds, minutes])
 
   const firstSeconds = () => {
     if (seconds === 60) {
