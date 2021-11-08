@@ -22,18 +22,41 @@ export const Index: React.FC = () => {
       <Container maxWidth="sm">
         <Box sx={{ bgcolor: '#cfe8fc', height: '100vh' }}>
           <h1 className={classes.titleStyle}>ChinChilla Timer</h1>
-          <Fab
-            color="primary"
-            sx={{
-              margin: '80px auto 0',
-              display: 'block',
-              fontSize: 24,
-              fontWeight: 'bold',
-            }}
-            onClick={() => onClickMinutesButton(3)}
-          >
-            ３
-          </Fab>
+          <div className={classes.buttonWrapperStyle}>
+            <Fab
+              color="primary"
+              sx={{
+                display: 'block',
+                fontSize: 24,
+                fontWeight: 'bold',
+              }}
+              onClick={() => onClickMinutesButton(1)}
+            >
+              1
+            </Fab>
+            <Fab
+              color="primary"
+              sx={{
+                display: 'block',
+                fontSize: 24,
+                fontWeight: 'bold',
+              }}
+              onClick={() => onClickMinutesButton(3)}
+            >
+              ３
+            </Fab>
+            <Fab
+              color="primary"
+              sx={{
+                display: 'block',
+                fontSize: 24,
+                fontWeight: 'bold',
+              }}
+              onClick={() => onClickMinutesButton(5)}
+            >
+              5
+            </Fab>
+          </div>
         </Box>
       </Container>
     </>
@@ -46,5 +69,11 @@ const UseStyles: any = makeStyles({
     margin: 0,
     paddingTop: 200,
     textAlign: 'center',
+  },
+  buttonWrapperStyle: {
+    display: 'flex',
+    justifyContent: 'space-around',
+    width: '80%',
+    margin: '80px auto',
   },
 })
