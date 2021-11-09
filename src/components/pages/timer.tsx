@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
-
+import useSound from 'use-sound'
 // @mui
 import { makeStyles } from '@mui/styles'
 import CssBaseline from '@mui/material/CssBaseline'
@@ -10,13 +10,16 @@ import Fab from '@mui/material/Fab'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
 import Paper from '@mui/material/Paper'
 
+// @ts-ignore
+import music from 'sounds/alert.mp3'
+
 export const Timer: React.FC = () => {
   const classes = UseStyles()
   const history = useHistory()
   const { time } = require('query-string').parse(window.location.search)
   const [minutes, setMinutes] = useState(0)
   const [seconds, setSeconds] = useState(60)
-
+  const [play] = useSound(music)
   useEffect(() => {
     setMinutes(Number(time))
     setTimeout(() => setMinutes(Number(time) - 1), 1000)
@@ -24,7 +27,10 @@ export const Timer: React.FC = () => {
   }, [time])
 
   useEffect(() => {
-    if (seconds === 0 && minutes === 0) return
+    if (seconds === 0 && minutes === 0) {
+      play()
+      return
+    }
 
     const countDown = setInterval(() => setSeconds(seconds - 1), 1000)
 
