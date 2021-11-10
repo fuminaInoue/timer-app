@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useHistory } from 'react-router-dom'
-
+import chinchilla from 'chinchilla.png'
 // @mui
 import { makeStyles } from '@mui/styles'
 import CssBaseline from '@mui/material/CssBaseline'
@@ -22,6 +22,7 @@ export const Index: React.FC = () => {
       <Container maxWidth="sm">
         <Box sx={{ bgcolor: '#cfe8fc', height: '100vh' }}>
           <h1 className={classes.titleStyle}>ChinChilla Timer</h1>
+          <img className={classes.imageStyle} src={chinchilla} alt="チンチラ" />
           <div className={classes.buttonWrapperStyle}>
             <Fab
               color="primary"
@@ -67,13 +68,19 @@ const UseStyles: any = makeStyles({
   titleStyle: {
     fontFamily: "'Poppins', sans-serif",
     margin: 0,
-    paddingTop: 200,
+    paddingTop: 80,
     textAlign: 'center',
   },
   buttonWrapperStyle: {
     display: 'flex',
     justifyContent: 'space-around',
     width: '80%',
-    margin: '80px auto',
+    margin: '40px auto',
+  },
+  imageStyle: {
+    width: 180,
+    height: 'auto',
+    margin: '56px auto 0',
+    display: 'block',
   },
 })
