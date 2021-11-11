@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import useSound from 'use-sound'
+
 // @mui
 import { makeStyles } from '@mui/styles'
 import CssBaseline from '@mui/material/CssBaseline'
@@ -71,7 +72,7 @@ export const Timer: React.FC = () => {
     <>
       <CssBaseline />
       <Container maxWidth="sm">
-        <Box sx={{ bgcolor: '#cfe8fc', height: '100vh' }}>
+        <Box sx={{ bgcolor: '#FFFAF0', height: '100vh' }}>
           <h1 className={classes.titleStyle}>Timer</h1>
           <Box
             sx={{
@@ -101,9 +102,13 @@ export const Timer: React.FC = () => {
             <Paper elevation={3}>{secondSeconds()}</Paper>
           </Box>
           <Fab
-            color="primary"
             aria-label="arrow-back-i-os"
-            sx={{ margin: '80px auto 0', display: 'block' }}
+            sx={{
+              background: '#FFDDDF',
+              color: '#333',
+              margin: '80px auto 0',
+              display: 'block',
+            }}
             onClick={() => onClickReturnButton()}
           >
             <ArrowBackIosIcon sx={{ ml: 1 }} />
@@ -120,5 +125,6 @@ const UseStyles: any = makeStyles({
     margin: 0,
     paddingTop: 200,
     textAlign: 'center',
+    color: '#333',
   },
 })
