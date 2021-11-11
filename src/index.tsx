@@ -3,15 +3,37 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
+// Import the functions you need from the SDKs you need
+import { initializeApp } from 'firebase/app'
+import { getAnalytics } from 'firebase/analytics'
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  // @ts-ignore
+  apiKey: 'AIzaSyBQhyrZIj6-jO7mtoT5bAbAkMc7F1dNEtY',
+  authDomain: 'timer-c541d.firebaseapp.com',
+  projectId: 'timer-c541d',
+  storageBucket: 'timer-c541d.appspot.com',
+  messagingSenderId: '408310029863',
+  appId: '1:408310029863:web:2e789c730a6827f1877802',
+  measurementId: 'G-B7447DPN94',
+}
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig)
+const analytics = getAnalytics(app)
 
 ReactDOM.render(
   <React.StrictMode>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins&display=swap"
       rel="stylesheet"
-    ></link>
+    />{' '}
     <App />
   </React.StrictMode>,
   document.getElementById('root'),
