@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
+import chinchilla from 'components/chinchilla.png'
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app'
 import { getAnalytics } from 'firebase/analytics'
@@ -28,6 +30,25 @@ const analytics = getAnalytics(app)
 
 ReactDOM.render(
   <React.StrictMode>
+    <title>チンチラタイマー</title>
+    <meta
+      name="description"
+      content="チンチラの可愛いタイマー！1分、3分、5分が測れます。"
+    />
+    <meta property="og:title" content="チンチラタイマー" />
+    <meta
+      property="og:description"
+      content="チンチラの可愛いタイマー！1分、3分、5分が測れます。"
+    />
+    <meta property="og:url" content="https://timer-c541d.web.app" />
+    <meta property="og:image" content={chinchilla} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:site" content="@fumina_twinsmom" />
+    <meta name="twitter:image" content={chinchilla} />
+    <meta name="twitter:card" content={chinchilla} />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
