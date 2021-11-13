@@ -20,7 +20,7 @@ export const Timer: React.FC = () => {
   const { time } = require('query-string').parse(window.location.search)
   const [minutes, setMinutes] = useState(0)
   const [seconds, setSeconds] = useState(60)
-  const [play] = useSound(music)
+  const [play, { stop }] = useSound(music)
   useEffect(() => {
     setMinutes(Number(time))
     setTimeout(() => setMinutes(Number(time) - 1), 1000)
@@ -43,8 +43,9 @@ export const Timer: React.FC = () => {
     // clean up
     return () => {
       clearInterval(countDown)
+      stop()
     }
-  }, [seconds, minutes])
+  }, [seconds, minutes, play, stop])
 
   const firstSeconds = () => {
     if (seconds === 60) {
