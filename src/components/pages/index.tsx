@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { useHistory } from 'react-router-dom'
 import chinchilla from 'chinchilla.png'
+import useSound from 'use-sound'
+
 // @mui
 import { makeStyles } from '@mui/styles'
 import CssBaseline from '@mui/material/CssBaseline'
@@ -9,15 +11,22 @@ import Container from '@mui/material/Container'
 import Fab from '@mui/material/Fab'
 import { useEffect } from 'react'
 
+// @ts-ignore
+import mute from 'sounds/mute.mp3'
+
 export const Index: React.FC = () => {
   const classes = UseStyles()
   const history = useHistory()
+  const [play] = useSound(mute)
 
   useEffect(() => {
     document.documentElement.style.overflow = 'hidden'
   }, [])
 
   const onClickMinutesButton = (minutes: number) => {
+    // 無音を再生して自動再生ポリシーをアンロックする
+    play()
+
     history.push({ pathname: '/timer', search: `?time=${minutes}` })
   }
 
