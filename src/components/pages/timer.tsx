@@ -43,9 +43,8 @@ export const Timer: React.FC = () => {
     // clean up
     return () => {
       clearInterval(countDown)
-      stop()
     }
-  }, [seconds, minutes, play, stop])
+  }, [seconds, minutes, play])
 
   const firstSeconds = () => {
     if (seconds === 60) {
@@ -66,6 +65,7 @@ export const Timer: React.FC = () => {
   }
 
   const onClickReturnButton = () => {
+    stop()
     history.push({ pathname: '/' })
   }
 
