@@ -38,7 +38,7 @@ export const Index: React.FC = () => {
           className={classes.boxStyle}
           sx={{ bgcolor: '#FFFAF0', height: '100vh' }}
         >
-          <h1 className={classes.titleStyle}>ChinChilla Timer</h1>
+          <h1 className={classes.titleStyle}>チンチラ タイマー</h1>
           <img className={classes.imageStyle} src={chinchilla} alt="チンチラ" />
           <div className={classes.buttonWrapperStyle}>
             <Fab
